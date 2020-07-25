@@ -1,0 +1,20 @@
+name: Result-Dist CI Workflow
+
+on: [push]
+
+jobs:
+  subscriber_build:
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+    
+      - name: Subscriber Build
+        uses: ballerina-platform/ballerina-action@master
+        with:
+          env: 
+            WORKING_DIR = ./subscriber
+          args: 
+            build -a --skip-tests
